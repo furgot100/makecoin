@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Thanks</title>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            Thanks
+          </a>
+          <span id="total-thx" class="hidden">You've earned <strong id="balance">0</strong>THX!</span>
+          <span id="ipfs-status"></span>
+        </div>
+    </nav>
+  </head>
+  <body>
+    <br>
+    <div class="col d-flex justify-content-center">
+        <div class="card" style="width: 50rem;">
+            <div class="card-body">
+                <h1>Send your thanks!</h1>
+                <p>
+                    This is a token to send thanks to people anonymously. Simply enter the persons metamask address below and send it.
+                </p>
+                <form id="thank-form">
+                    <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Send To</span>
+                        <input type="text" class="form-control" id="recipient" name="recipient"
+                        placeholder="e.g. 0x8AC0d6dCFe020Bb5f8ee78b5Af02271df54A6E2e">
+                    </div>
+                    </div>
+                    <div class="mb-3">
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-dark">Send</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Compiled using Webpack -->
+    <script src="index.js"></script>
+  </body>
+</html>
