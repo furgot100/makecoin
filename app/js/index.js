@@ -2,7 +2,6 @@
 import Web3 from "web3";
 import thanksArtifact from "../../build/contracts/ThanksContract.json";
 import fleek from '@fleekhq/fleek-storage-js';
-require('dotenv').config
 
 
 // Create a Javascript class to keep track of all the things
@@ -47,10 +46,9 @@ const App = {
         $('my-account').html(this.account);
     },
 
-    storeMetadata: async function (name, recipient) {
+    storeMetadata: async function (recipient) {
         // Build the metadata.
         var metadata = {
-            "name": "THX",
             "description": `Some says thank you!`,
             "recipient": recipient,
             "image": "https://ipfs.io/ipfs/QmQEsrjra51cPRgjTwURUXZk3UTwRrChyjCrSKNbG3hWia",
@@ -59,8 +57,8 @@ const App = {
 
         // Configure the uploader.
         const uploadMetadata = {
-            apiKey: process.env.FLEEK_KEY,
-            apiSecret: process.env.FLEEK_SECRET_KEY,
+            apiKey: '7pht79Ml8JBEP+Gk7ydC+Q==',
+            apiSecret: 'uBK/r+PHaJCau/25Li5SUgSUuQKTHvVdqRbW3D7KXbM=',
             key: `metadata/${metadata.timestamp}.json`,
             data: JSON.stringify(metadata),
         };
@@ -73,15 +71,15 @@ const App = {
         const result = await fleek.upload(uploadMetadata);
 
         // Once the file is added, then we can send a shoutout!
-        this.awardItem(to, result.publicUrl);
+        this.awardItem(recipient, result.publicUrl);
     },
 
-    awardItem: async function (to, metadataURL) {
+    awardItem: async function (recipient, metadataURL) {
         // Fetch the awardItem method from our contract.
         const { awardItem } = this.thanksContract.methods;
 
         // Award the item.
-        await awardItem(to, metadataURL).send({ from: this.account });
+        await awardItem(recipient, metadataURL).send({ from: this.account });
 
         // Set the status and show the metadata link on IPFS.
         this.setStatus(`You sent thanks to someone <a href="${metadataURL}" target="_blank">here</a>.`);
